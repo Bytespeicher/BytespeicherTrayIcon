@@ -1,0 +1,52 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
+version: '0.9375-{build}'
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Build worker image (VM template)
+image: Visual Studio 2015
+
+# clone directory
+clone_folder: c:\projects\byteicon
+
+# set clone depth
+clone_depth: 3                    # clone entire repository history if not defined
+
+# environment variables
+environment:
+  QTDIR: C:\Qt\5.7\msvc2015
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+# scripts to run before build
+before_build:
+ - set PATH=%PATH%;%QTDIR%\bin
+ - '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"'
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+ - qmake main.pro
+ - nmake
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# to disable automatic tests
+test: off
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+# pushing a single file
+artifacts:
+ - path: release\byteicon.exe
