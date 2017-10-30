@@ -34,6 +34,7 @@
 #include <QDebug>
 #include <QTextCodec>
 #include <QTimer>
+#include <QTranslator>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QJsonValue>
@@ -283,8 +284,11 @@ void StratumsphereTrayIcon::networkStateChanged(uint state) {
 
 int main(int argc, char * argv[]) {
   QApplication app(argc, argv);
-  //QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
-  StratumsphereTrayIcon * sti = new StratumsphereTrayIcon;
+  QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+  QTranslator translator;
+  translator.load("lang/main_" + QLocale::system().name());
+  app.installTranslator(&translator);
+  StratumsphereTrayIcon *sti = new StratumsphereTrayIcon();
 
   // parse arguments
   QStringList args = app.arguments();
