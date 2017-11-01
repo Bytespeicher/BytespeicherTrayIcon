@@ -47,7 +47,12 @@ macx:!noicon {
 }
 
 TRANSLATIONS += lang/main_ru.ts \
-                lang/main_hi-IN.ts
+                lang/main_pt-BR.ts \
+                lang/main_ca-ES.ts \
+                lang/main_es-Es.ts \
+                lang/main_fr-FR.ts \
+                lang/main_cs-CZ.ts
+                
                 
 TRANSLATIONS_FILES =
 
