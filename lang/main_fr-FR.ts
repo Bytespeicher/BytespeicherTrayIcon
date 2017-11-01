@@ -4,60 +4,60 @@
 <context>
     <name>StratumsphereTrayIcon</name>
     <message>
-        <location filename="../main.cpp" line="82"/>
-        <source>Montrer les &amp;notifications</source>
-        <translation type="unfinished"></translation>
+        <location filename="../main.cpp" line="83"/>
+        <source>Show &amp;notifications</source>
+        <translation>Montrer les &amp;notifications</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="87"/>
-        <location filename="../main.cpp" line="193"/>
-        <source>&amp;Mettre à jour le statut</source>
-        <translation type="unfinished"></translation>
+        <location filename="../main.cpp" line="88"/>
+        <location filename="../main.cpp" line="194"/>
+        <source>&amp;Update status</source>
+        <translation>&amp;Mettre à jour le statut</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="91"/>
-        <source>&amp;Quitter</source>
-        <translation type="unfinished"></translation>
+        <location filename="../main.cpp" line="92"/>
+        <source>&amp;Exit</source>
+        <translation>&amp;Quitter</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="126"/>
-        <source>Mise à jour…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="199"/>
-        <source>Cet espace est clos</source>
-        <translation type="unfinished"></translation>
+        <location filename="../main.cpp" line="127"/>
+        <source>Updating…</source>
+        <translation>Mise à jour…</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="200"/>
-        <source>Bytespeicher a fermé.</source>
-        <translation type="unfinished"></translation>
+        <source>Space is closed</source>
+        <translation>Cet espace est clos</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="203"/>
-        <source>Cet espace est ouvert</source>
-        <translation type="unfinished"></translation>
+        <location filename="../main.cpp" line="201"/>
+        <source>The Bytespeicher has just closed.</source>
+        <translation>Bytespeicher a fermé.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="204"/>
-        <source>Bytespeicher a ouvert !</source>
-        <translation type="unfinished"></translation>
+        <source>Space is open</source>
+        <translation>Cet espace est ouvert</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="207"/>
-        <source>On ne peut pas déterminer le statut</source>
-        <translation type="unfinished"></translation>
+        <location filename="../main.cpp" line="205"/>
+        <source>The Bytespeicher has just opened!</source>
+        <translation>Bytespeicher a ouvert !</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="215"/>
-        <source>Statut depuis : %1</source>
-        <translation type="unfinished"></translation>
+        <location filename="../main.cpp" line="208"/>
+        <source>Could not determine opening status</source>
+        <translation>On ne peut pas déterminer le statut</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="218"/>
-        <source>Dernière mise à jour : %1</source>
-        <translation type="unfinished"></translation>
+        <location filename="../main.cpp" line="216"/>
+        <source>Status since: %1</source>
+        <translation>Statut depuis : %1</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="219"/>
+        <source>Last update: %1</source>
+        <translation>Dernière mise à jour : %1</translation>
     </message>
 </context>
 </TS>
