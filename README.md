@@ -1,5 +1,6 @@
 # BytespeicherTrayIcon ![alt text](res/open-32.png "BytespeicherTrayIcon")
-[![Build Status](https://travis-ci.org/Bytespeicher/BytespeicherTrayIcon.svg?branch=master)](https://travis-ci.org/Bytespeicher/BytespeicherTrayIcon)  
+[![Build Status](https://travis-ci.org/Bytespeicher/BytespeicherTrayIcon.svg?branch=master)](https://travis-ci.org/Bytespeicher/BytespeicherTrayIcon)  [![Build status](https://ci.appveyor.com/api/projects/status/rltl3xgwt914vvrk/branch/master?svg=true)](https://ci.appveyor.com/project/mkzero/bytespeichertrayicon/branch/master)
+
 
 An application to show the opening status of the bytespeicher in the
 system tray icon.
