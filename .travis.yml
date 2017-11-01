@@ -28,7 +28,7 @@ script:
   - cd deb
   - qmake ../main.pro
   - echo "BytespeicherTrayIcon" > description-pak
-  - checkinstall --install=no -y --pkggroup="Office" --pkgname="byteicon" --pkgversion="0.1" --pkgrelease="0.1" --pkglicense="LGPLv3" --maintainer="test@example.com" --provides="byteicon" --requires="qt59base"
+  - checkinstall --install=no -y --pkggroup="Office" --pkgname="byteicon" --pkgversion="0.1" --pkgrelease="0.1" --pkglicense="GPLv3" --maintainer="test@example.com" --provides="byteicon" --requires="qt59base"
   
 
 after_success:
