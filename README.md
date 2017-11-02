@@ -6,6 +6,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Bytespeicher/BytespeicherTrayIcon.svg)](https://github.com/Bytespeicher/BytespeicherTrayIcon/stargazers)
 [![GitHub license](https://img.shields.io/github/license/Bytespeicher/BytespeicherTrayIcon.svg)](https://github.com/Bytespeicher/BytespeicherTrayIcon/blob/master/LICENSE.md)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/Bytespeicher/BytespeicherTrayIcon.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FBytespeicher%2FBytespeicherTrayIcon)
+
 An application to show the opening status of the bytespeicher in the
 system tray icon.
 
