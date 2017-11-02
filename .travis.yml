@@ -1,33 +1,64 @@
 language: cpp
-compiler: gcc
-sudo: require
+
+os:
+  - linux
+  - osx
+
 dist: trusty
 
+compiler:
+  - clang
+  - gcc
+
+env:
+  matrix:
+    - QT=5  BREW=
+    - QT=5  BREW=ex   PPA=ubuntu-sdk-team/ppa
+    - QT=51 BREW=ex   PPA=beineri/opt-qt511-trusty
+    - QT=52 BREW=ex   PPA=beineri/opt-qt521-trusty
+    - QT=53 BREW=ex   PPA=beineri/opt-qt532-trusty
+    - QT=54 BREW=ex   PPA=beineri/opt-qt542-trusty
+    - QT=55 BREW=@5.5 PPA=beineri/opt-qt551-trusty
+    - QT=56 BREW=ex   PPA=beineri/opt-qt562-trusty
+    - QT=56 BREW=ex   PPA=beineri/opt-qt563-trusty
+    - QT=57 BREW=@5.7 PPA=beineri/opt-qt571-trusty
+    - QT=58 BREW=ex   PPA=beineri/opt-qt58-trusty
+    - QT=59 BREW=@5.9 PPA=beineri/opt-qt591-trusty
+
+matrix:
+  exclude:
+    - { os: osx, env: QT=5  BREW=ex   PPA=ubuntu-sdk-team/ppa      }
+    - { os: osx, env: QT=51 BREW=ex   PPA=beineri/opt-qt511-trusty }
+    - { os: osx, env: QT=52 BREW=ex   PPA=beineri/opt-qt521-trusty }
+    - { os: osx, env: QT=53 BREW=ex   PPA=beineri/opt-qt532-trusty }
+    - { os: osx, env: QT=54 BREW=ex   PPA=beineri/opt-qt542-trusty }
+    - { os: osx, env: QT=56 BREW=ex   PPA=beineri/opt-qt562-trusty }
+    - { os: osx, env: QT=56 BREW=ex   PPA=beineri/opt-qt563-trusty }
+    - { os: osx, env: QT=58 BREW=ex   PPA=beineri/opt-qt58-trusty  }
+
 before_install:
-    - sudo add-apt-repository ppa:beineri/opt-qt591-trusty -y
-    - sudo apt-get update -qq
-    
-install: 
-    - sudo apt-get -y install qt59base qt59tools
-    - source /opt/qt*/bin/qt*-env.sh
+  - '[[ "$TRAVIS_OS_NAME" != linux || -z "$PPA" ]] || sudo add-apt-repository -y ppa:$PPA'
+  - '[ "$TRAVIS_OS_NAME" != linux ] || sudo apt-get -qy update'
+  - '[ "$TRAVIS_OS_NAME" != osx   ] || brew update'
 
-script: 
-  - mkdir appdir appdir/usr appdir/usr/share appdir/usr/share/applications
-  - cp  byteicon.desktop appdir/usr/share/applications
-  - qmake PREFIX=/usr
-  - make -j$(nproc)
-  - make INSTALL_ROOT=appdir install ; find appdir/
-  - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
-  - chmod a+x linuxdeployqt*.AppImage
-  - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  - ls /home/travis/build/Bytespeicher/BytespeicherTrayIcon
-  - cp /home/travis/build/Bytespeicher/BytespeicherTrayIcon/byteicon appdir/usr/share/applications
-  - cp res/byteicon.png appdir/usr/share/applications
-  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs
-  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
+install:
+  - '[ "$TRAVIS_OS_NAME" != linux ] || sudo apt-get -qy install cppcheck doxygen graphviz lcov'
+  - '[[ "$TRAVIS_OS_NAME" != linux || "$PPA" != */opt-* ]] || sudo apt-get -qy install qt${QT}base qt${QT}xmlpatterns qt${QT}tools'
+  - '[[ "$TRAVIS_OS_NAME" != linux || "$PPA" == */opt-* ]] || sudo apt-get -qy install qt5-qmake qtbase5-dev libqt5xmlpatterns5-dev'
+  - '[ "$TRAVIS_OS_NAME" != linux ] || gem install lcoveralls'
+  - '[ "$TRAVIS_OS_NAME" != osx ] || brew install cppcheck doxygen graphviz qt$BREW'
+  - '[ "$TRAVIS_OS_NAME" != osx ] || brew link --force qt$BREW'
+  - qmake -v
 
-after_success:
-  - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
-  - ls -l
-  - curl --upload-file ./byteicon*.AppImage https://transfer.sh/byteicon-git.$(git rev-parse --short HEAD)-x86_64.AppImage
+before_script:
+  - '[[ "$TRAVIS_OS_NAME" != linux || "$CXX" != clang++ ]] || export QMAKESPEC=linux-clang'
+  - '[[ "$TRAVIS_OS_NAME" != linux || "$CXX" != g++     ]] || export QMAKESPEC=linux-g++'
+  - '[[ "$TRAVIS_OS_NAME" != osx   || "$CXX" != clang++ ]] || export QMAKESPEC=macx-clang'
+  - '[[ "$TRAVIS_OS_NAME" != osx   || "$CXX" != g++     ]] || export QMAKESPEC=macx-g++'
+  - '[[ "$TRAVIS_OS_NAME" != linux || "$PPA" != */opt-* ]] || . /opt/qt$QT/bin/qt$QT-env.sh'
+  - '[[ "$TRAVIS_OS_NAME" != linux || "$PPA" == */opt-* ]] || export QT_SELECT=qt5'
+  - mkdir -p "$TRAVIS_BUILD_DIR-build"
+  - qmake -o "$TRAVIS_BUILD_DIR-build" -r -Wall -Wlogic -Wparser CONFIG+=debug_and_release "$TRAVIS_BUILD_DIR"
 
+script:
+  - make -C "$TRAVIS_BUILD_DIR-build" all
