@@ -51,7 +51,8 @@ TRANSLATIONS += lang/main_ru.ts \
                 lang/main_ca-ES.ts \
                 lang/main_es-ES.ts \
                 lang/main_fr-FR.ts \
-                lang/main_cs-CZ.ts
+                lang/main_cs-CZ.ts \
+                lang/main_ka-GE.ts
                 
                 
 TRANSLATIONS_FILES =
