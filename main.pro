@@ -46,14 +46,20 @@ macx:!noicon {
   QMAKE_INFO_PLIST = res/Info-icon.plist
 }
 
-TRANSLATIONS += lang/main_ru.ts \
-                lang/main_pt-BR.ts \
-                lang/main_ca-ES.ts \
+TRANSLATIONS += lang/main_ca-ES.ts \
+                lang/main_cs-CZ.ts \
+                lang/main_de-DE.ts \
+                lang/main_el-GR.ts \
                 lang/main_es-ES.ts \
                 lang/main_fr-FR.ts \
-                lang/main_cs-CZ.ts \
-                lang/main_ka-GE.ts
-                
+                lang/main_hi-IN.ts \
+                lang/main_it-IT.ts \
+                lang/main_ka-GE.ts \
+                lang/main_pt-BR.ts \
+                lang/main_ro-RO.ts \
+                lang/main_ru.ts \
+                lang/main_pt-BR.ts \
+                lang/main_zh-CN.ts
                 
 TRANSLATIONS_FILES =
 
