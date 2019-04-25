@@ -29,7 +29,7 @@ script:
 deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
-  file: ./byteicon*.AppImage
+  file: byteicon-git.$(git rev-parse --short HEAD)-x86_64.AppImage
   skip_cleanup: true
   draft: true
   on:
@@ -37,4 +37,3 @@ deploy:
     branches:
       only:
         - master
-        - auto-pre-release
