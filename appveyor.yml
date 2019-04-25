@@ -21,6 +21,10 @@ clone_depth: 3                    # clone entire repository history if not defin
 # environment variables
 environment:
   QTDIR: C:\Qt\5.7\msvc2015
+  
+skip_commits:
+  files:
+    - .travis.yml
 
 #---------------------------------#
 #       build configuration       #
