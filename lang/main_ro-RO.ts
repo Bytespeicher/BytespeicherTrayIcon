@@ -12,7 +12,7 @@
         <location filename="../main.cpp" line="88"/>
         <location filename="../main.cpp" line="194"/>
         <source>&amp;Update status</source>
-        <translation type="unfinished">&amp;Actualizeaza Stare</translation>
+        <translation>&amp;Actualizeaza Stare</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="92"/>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../main.cpp" line="205"/>
         <source>The Bytespeicher has just opened!</source>
-        <translation type="unfinished">Bytespeicher a fost deschis!</translation>
+        <translation>Bytespeicher a fost deschis!</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="208"/>
