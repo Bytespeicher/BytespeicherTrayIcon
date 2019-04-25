@@ -34,4 +34,7 @@ deploy:
   draft: true
   on:
     repo: Bytespeicher/BytespeicherTrayIcon
-
+    branches:
+      only:
+        - master
+        - auto-pre-release
