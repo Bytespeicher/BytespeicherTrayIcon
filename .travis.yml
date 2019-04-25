@@ -26,6 +26,13 @@ script:
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
 
+deploy:
+  provider: releases
+  api_key: $GITHUB_OAUTH_TOKEN
+  file: ./byteicon*.AppImage
+  skip_cleanup: true
+  draft: true
+
 after_success:
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
   - ls -l
