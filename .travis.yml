@@ -27,11 +27,11 @@ script:
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
 
 before_deploy:
-  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')
 deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
-  file: byteicon-git.$(git rev-parse --short HEAD)-x86_64.AppImage
+  file: byteicon-$(git rev-parse --short HEAD)-x86_64.AppImage
   skip_cleanup: true
   draft: true
   on:
