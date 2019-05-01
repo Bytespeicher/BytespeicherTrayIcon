@@ -25,7 +25,13 @@ script:
   - cp res/byteicon.png appdir/usr/share/applications
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
-
+  - mkdir deb
+  - cd deb
+  - qmake ../main.pro
+  - echo "BytespeicherTrayIcon" > description-pak
+  - checkinstall --install=no -y --pkggroup="Office" --pkgname="byteicon" --pkgversion="0.99" --pkgrelease="0.99" --pkglicense="GPLv3" --maintainer="info@bytespeicher.org" --provides="byteicon" --requires="qt512base  qt512tools libgl-dev"
+  - ls -l
+  
 before_deploy:
   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')}
 deploy:
