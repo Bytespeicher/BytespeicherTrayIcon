@@ -60,7 +60,8 @@ TRANSLATIONS += lang/main_ca-ES.ts \
                 lang/main_ru.ts \
                 lang/main_pt-BR.ts \
                 lang/main_zh-CN.ts \
-                lang/main_he-IL.ts
+                lang/main_he-IL.ts \
+                lang/main_fa-IR.ts
                 
 TRANSLATIONS_FILES =
 
